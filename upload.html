@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+<title>Bird Image Classifier</title>
+<style>
+	.myDiv {
+		
+	  	border: 5px outset black;
+	  	background-color: lightblue;    
+	  	text-align: center;
+	}
+	</style>
+</head>
+<body style="background-image: url('static/image/bird.jpeg')">
+<h1> <center> Bird Image classifier </center> </h1>
+<h2><center>Upload the image of a Bird </center></h2>
+<div class="myDiv">
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+
+</p>
+{% if filename %}
+	<div>
+		<img src="{{ url_for('display_image', filename=filename) }}">
+	</div>
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+</div>
+</body>
+</html>
